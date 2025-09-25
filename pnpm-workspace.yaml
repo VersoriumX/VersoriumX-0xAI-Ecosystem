@@ -1,0 +1,6 @@
+packages:
+  - 'src/frontend'
+  - 'src/contracts'
+  - 'src/ipfs-tools'
+  - 'src/shared/*'
+  # - 'src/ai-backend' # REMOVE this line as ai-backend is Python, not a pnpm workspace

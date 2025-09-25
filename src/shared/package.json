@@ -1,0 +1,57 @@
+{
+  "name": "versoriumx-0xai-ecosystem",
+  "version": "0.1.0",
+  "description": "VersoriumX Monorepo Root Package",
+  "private": true,
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:ai-backend": "pnpm --filter ai-backend start",
+    "dev:hardhat-node": "pnpm --filter contracts node",
+    "build:all": "pnpm run build --recursive",
+    "test:all": "pnpm run test --recursive",
+    "lint:all": "pnpm run lint --recursive",
+    "format:all": "pnpm run format --recursive",
+    "clean:all": "pnpm run clean --recursive",
+    "audit:fix": "pnpm audit fix"
+  },
+  "pnpm": {
+    "overrides": {
+      "uglify-js": "3.17.4"
+    }
+  },
+  "dependencies": {
+    "ankr-react": "^0.3.0",
+    "ethers": "^6.x.x"
+  },
+  "devDependencies": {
+    "typescript": "^5.x.x",
+    "@types/node": "^20.x.x",
+    "dotenv": "^16.x.x",
+    "eslint": "^8.x.x",
+    "prettier": "^3.x.x",
+    "jest": "^29.x.x",
+    "ts-jest": "^29.x.x",
+    "@types/jest": "^29.x.x",
+    "hardhat": "^2.x.x",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat-vyper": "^0.1.0"
+  },
+  "workspaces": [
+    "src/frontend",
+    "src/contracts",
+    "src/ai-backend",
+    "src/ipfs-tools",
+    "src/shared/*"
+  ]
+}
