@@ -23,7 +23,9 @@
     "lint:all": "pnpm run lint --recursive",
     "format:all": "pnpm run format --recursive",
     "clean:all": "pnpm run clean --recursive",
-    "audit:fix": "pnpm audit fix"
+    "audit:fix": "pnpm audit fix",
+    "build:frontend:gh-pages": "NODE_ENV=production VITE_DEPLOY_TO_GH_PAGES=true pnpm --filter frontend build",
+    "deploy:gh-pages": "pnpm run build:frontend:gh-pages && pnpm exec gh-pages -d build/frontend"
   },
   "pnpm": {
     "overrides": {
@@ -31,24 +33,36 @@
       "axios": ">=1.12.0",
       "cookie": ">=0.7.0",
       "tmp": ">=0.2.4",
-      "hardhat": "2.29.7"
+      "hardhat": "2.29.7",
+      "ankr-react": {
+        "react-query": "npm:@tanstack/react-query@^4.0.0",
+        "react": "^19.0.0"
+      },
+      "react-query": "npm:@tanstack/react-query@^4.0.0"
     }
   },
   "dependencies": {
     "ankr-react": "^0.3.0",
-    "ethers": "^6.0.0"
+    "ethers": "^6.x.x"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "@types/jest": "^29.x.x",
+    "typescript": "^5.x.x",
     "@types/node": "^20.x.x",
     "dotenv": "^16.x.x",
     "eslint": "^8.x.x",
-    "hardhat": "3.0.6",
-    "hardhat-vyper": "^1.0.1",
-    "jest": "^29.x.x",
     "prettier": "^3.x.x",
+    "jest": "^29.x.x",
     "ts-jest": "^29.x.x",
-    "typescript": "^5.x.x"
-  }
+    "@types/jest": "^29.x.x",
+    "hardhat": "^2.x.x",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "hardhat-vyper": "^0.1.0",
+    "gh-pages": "^6.1.1"
+  },
+  "workspaces": [
+    "src/frontend",
+    "src/contracts",
+    "src/ipfs-tools",
+    "src/shared/*"
+  ]
 }
