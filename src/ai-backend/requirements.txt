@@ -1,7 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0.post1
 pydantic==1.10.13
-python-dotenv==1.0.0
+python-dotenv==1.2.2
 # For AI/Vector DB:
 # sentence-transformers==2.2.2
 # transformers==4.35.2
